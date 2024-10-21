@@ -1,0 +1,16 @@
+services:
+  ssh-setup:
+    build:
+      context: .
+      dockerfile: Dockerfile.ssh
+    volumes:
+      - ssh-keys:/root/.ssh
+    command: cat /root/.ssh/id_rsa.pub
+
+networks:
+  ssh-network:
+    driver: bridge
+
+volumes:
+  ssh-keys:
+
